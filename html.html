@@ -1,0 +1,25 @@
+<head>
+    <title>Geolocator</title>
+</head>
+<body>
+<h3>Click Button to Geolocate</h3>
+
+<button onclick="locationSearch()">Geolocate</button>
+
+<h5 id="result-area"></h5>
+</body>
+<script>
+    var result = document.getElementById("result-area");
+
+    function locationSearch() {
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            result.innerHTML = "Geolocation not supported by browser."
+        }
+    }
+
+    function showPosition(position) {
+        result.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+    }
+</script>
